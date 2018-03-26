@@ -1,0 +1,28 @@
+client:
+  rbd_cache_size: 67108864
+  rbd_cache_writethrough_until_flush: true
+  rbd_default_features: 3
+  rbd_concurrent_management_ops: 20
+  rbd_default_format: 2
+  rbd_cache_max_dirty: 0
+  rbd_cache: true
+  rgw_keystone_url:
+  rgw_keystone_admin_user:
+  rgw_keystone_admin_password:
+  rgw_keystone_admin_tenant:
+  rgw_keystone_verify_ssl: true
+
+client.radosgw:
+  rgw_print_continue: true
+
+mon:
+  mon_osd_auto_mark_new_in: false
+  mon_osd_auto_mark_auto_out_in: false
+
+client.radosgw.deploy-3:
+  keyring: /etc/ceph/ceph.client.radosgw.keyring
+  rgw_dns_name: deploy-3.public
+  host: deploy-3
+  rgw_frontends: fastcgi socket_port=9000 socket_host=0.0.0.0
+  log_file: /var/log/ceph/client.radosgw.gateway.log
+  rgw_socket_path:
