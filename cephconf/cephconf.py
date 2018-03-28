@@ -26,11 +26,12 @@ options:
       - Path to the ceph.conf file. This file is updated if C(dest) is not supplied.
     required: true
     default: null
-  dest:
+  path:
     description:
-      - Path to the ceph.conf file; this file is created if required
-    required: false
-    default: C(src)
+      - 'Path to the ceph.conf to write.  Aliases: I(dest), I(name)'
+    required: true
+    default: null
+    aliases: ['dest', 'name'] 
   section:
     description:
       - Section name in ceph.conf file. This is added if C(state=present) automatically when
@@ -328,7 +329,7 @@ def main():
     module = AnsibleModule(
         argument_spec=dict(
             src=dict(required=True),
-            dest=dict(required=False),
+            path=dict(aliases=['dest', 'name'], required=True),
             section=dict(required=False),
             srcfile=dict(required=False),
             option=dict(required=False),
